@@ -2,6 +2,8 @@
 
 We provide instructions, evaluation rubrics, and gold-standard replication reports for several End2EndBench tasks in this repository.
 
+We also provide some sample agent trajectories on the s1: Simple test-time scaling task: 
+
 ### Tasks:
 * **The Surprising Effectiveness of Test-Time Training for Abstract Reasoning**
     * [Original Paper](https://arxiv.org/abs/2411.07279): Shows that test-time training significantly improves LLMs' performance on the ARC-AGI benchmark. Involves investigating a large space of design choices in how to apply test-time training to this setting effectively. Requires dataset generation, test-time training implementation, hill-climbing on a space of design choices, and evaluation of resulting performance.

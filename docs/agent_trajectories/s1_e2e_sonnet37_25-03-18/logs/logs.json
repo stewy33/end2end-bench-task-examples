@@ -1,0 +1,112 @@
+{
+  "2025-03-18T02-03-00-04-00_acc-rd-s1_JQX2QoDzw6tfuJXtB2xc6X.json": {
+    "version": 2,
+    "status": "success",
+    "eval": {
+      "run_id": "c8qdW52skjgfSWz2hjW5ji",
+      "created": "2025-03-18T02:03:00-04:00",
+      "task": "acc_rd_s1",
+      "task_id": "JQX2QoDzw6tfuJXtB2xc6X",
+      "task_version": 0,
+      "task_file": "task.py",
+      "task_attribs": {},
+      "task_args": {
+        "task_version": "e2e"
+      },
+      "dataset": {
+        "samples": 1,
+        "sample_ids": [
+          1
+        ],
+        "shuffled": false
+      },
+      "sandbox": [
+        "docker",
+        "compose.yaml"
+      ],
+      "model": "anthropic/claude-3-7-sonnet-20250219",
+      "model_args": {},
+      "config": {
+        "epochs": 3
+      },
+      "revision": {
+        "type": "git",
+        "origin": "https://github.com/stewy33/end2end-bench.git",
+        "commit": "01f3ee4e"
+      },
+      "packages": {
+        "inspect_ai": "0.3.60.dev16+g7be36205.d20250210"
+      },
+      "metadata": {
+        "user": "stew"
+      }
+    },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "solver": "end2end_bench/e2e_setup_fn",
+          "params": {
+            "e2e_task": "S1Task"
+          }
+        },
+        {
+          "solver": "system_message",
+          "params": {
+            "template": "\ninstructions:\n\nYou can use the 'bash' tool (which enables you to run commands in a bash shell) and the 'python' tool (which enables you to run python code).\n\nNote that the 'bash' tool uses a SEPARATE shell for each command (e.g. cd in one call does not affect the current directory in another call, so you MUST cd in each call).\n\nYou should not attempt to solve the command in a single turn, which is impossible. Before calling a bash or python function, reason in a step-by-step manner as to what action to take next.\n\nOnce you believe you completed the task, you should call the submit() function.\n"
+          }
+        },
+        {
+          "solver": "use_tools",
+          "params": {
+            "tools": [
+              [
+                {
+                  "type": "tool",
+                  "name": "bash",
+                  "params": {
+                    "timeout": 400
+                  }
+                },
+                {
+                  "type": "tool",
+                  "name": "python",
+                  "params": {
+                    "timeout": 400
+                  }
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "solver": "submit_tool",
+          "params": {}
+        },
+        {
+          "solver": "basic_agent_loop",
+          "params": {}
+        }
+      ],
+      "config": {}
+    },
+    "results": {
+      "total_samples": 3,
+      "completed_samples": 3,
+      "scores": []
+    },
+    "stats": {
+      "started_at": "2025-03-18T02:03:00-04:00",
+      "completed_at": "2025-03-18T02:40:18-04:00",
+      "model_usage": {
+        "anthropic/claude-3-7-sonnet-20250219": {
+          "input_tokens": 437,
+          "output_tokens": 147678,
+          "total_tokens": 3133323,
+          "input_tokens_cache_write": 281224,
+          "input_tokens_cache_read": 2703984
+        }
+      }
+    }
+  }
+}
