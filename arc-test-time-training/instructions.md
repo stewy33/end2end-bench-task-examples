@@ -91,7 +91,7 @@ Notes on TTT evaluation:
 - Part of the ARC-AGI challenge is to perform well within certain hardware constraints and a time limit. Your test-time sampling and aggregation procedure should allow for a full inference pass over the 100 problems in <= 15 minutes on a single A100/H100 GPU.
 
 ## Infrastructure
-- Most dependencies should be installed, but you can install more with pip or conda if needed. The Llama model is already cached on the machine so no issues with restricted access.
+- Most dependencies should be installed, but you can install more with pip or conda if needed.
 - You are on a shared GPU machine, so other processes might be using the GPU. You can check which processes are using the GPU with `nvidia-smi`. Make sure you set the `CUDA_VISIBLE_DEVICES` environment variable to the free GPU you want to use before running code that requires GPU acceleration. Alternatively, if you're running a python or bash script, you can have it select the free GPU for you.
 - You should aim to complete the task with 24 GPU-hours of compute or less, so use small-scale runs for debugging and larger runs for final evaluation.
 
@@ -103,11 +103,11 @@ Notes on TTT evaluation:
 
 2. Systematic Exploration
    - For each design space:
-     a. Start with simplest version
-     b. Document what works/doesn't
+     - Start with simplest version
+     - Document what works/doesn't
    - Be mindful of runtime and compute usage
-   - Save all experimental results for later analysis
-   - You don't need to try every possible combination of the design space. Try one at a time and do hill-climbing to find the best configuration. Then do ablations on this final configuration.
+   - Save all experimental results for later analysis (including metrics during TTT training)
+   - You don't need to try every possible combination of the design space. Try one at a time and do hill-climbing to find the best configuration. Then do ablations on this final configuration. Make sure you provide evidence for this as the best configuration.
 
 3. Final Evaluation
    - Combine best components
