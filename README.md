@@ -1,8 +1,8 @@
 # End2End-Bench Task Examples
 
-We provide instructions, evaluation rubrics, and gold-standard replication reports for several End2EndBench tasks in this repository.
+We provide instructions, evaluation rubrics, gold-standard replication reports, and sample agent trajectories for several End2EndBench tasks in this repository.
 
-We also provide some sample agent trajectories on the s1: Simple test-time scaling task at [https://www.stewyslocum.com/end2end-bench-task-examples/agent_trajectories](https://www.stewyslocum.com/end2end-bench-task-examples/agent_trajectories).
+[[LINK] Sample agent trajectories](https://www.stewyslocum.com/end2end-bench-task-examples/agent_trajectories)
 
 ### Tasks:
 * **The Surprising Effectiveness of Test-Time Training for Abstract Reasoning**
