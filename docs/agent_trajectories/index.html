@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directory Listing</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        ul { list-style-type: none; padding-left: 20px; }
+        li { margin: 5px 0; }
+        .folder { font-weight: bold; }
+        .folder a { 
+            text-decoration: none; 
+            color: #0066cc;
+        }
+        .folder a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agent Trajectories</h1>
+    <div id="listing"></div>
+    <script>
+        const listingDiv = document.getElementById("listing");
+        
+        // Configuration - add your directories here
+        const directories = [
+            "s1_e2e_sonnet37_25-03-18/"
+        ];
+        
+        function generateListing() {
+            try {
+                let html = '<ul>';
+                
+                // Add folders as clickable links
+                for (let dir of directories) {
+                    const folderUrl = `${window.location.origin}${window.location.pathname.replace(/\/[^\/]*$/, '')}/${dir}`;
+                    html += `<li class="folder">📁 <a href="${folderUrl}">${dir}</a></li>`;
+                }
+                
+                html += '</ul>';
+                
+                if (directories.length === 0) {
+                    listingDiv.innerHTML = "No directories found";
+                } else {
+                    listingDiv.innerHTML = html;
+                }
+            } catch (error) {
+                listingDiv.innerHTML = `Error generating directory listing: ${error.message}`;
+                console.error('Full error:', error);
+            }
+        }
+
+        generateListing();
+    </script>
+</body>
+</html>
